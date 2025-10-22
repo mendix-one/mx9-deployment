@@ -2,7 +2,7 @@
 ARG PACKAGE_BASE_IMAGE=ubuntu:noble
 FROM ${PACKAGE_BASE_IMAGE} AS package
 
-ARG SOURCE_PATH=./project
+ARG SOURCE_PATH=./
 ARG MXBUILD_URL=https://cdn.mendix.com/runtime/mxbuild-9.24.40.80973.tar.gz
 ARG MXBUILD_PATH=/opt/mxbuild
 ARG JAVA_JDK_PATH=.
