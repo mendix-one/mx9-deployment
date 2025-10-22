@@ -10,6 +10,9 @@ ARG JAVA_HOME_PATH=/usr/lib/jvm/jdk-21.0.9-oracle-x64/
 # Set the user ID
 ARG USER_UID=1001
 
+# Build stage
+FROM ${PACKAGE_BASE_IMAGE} AS package
+
 # Check variable
 RUN echo "PACKAGE_BASE_IMAGE: ${PACKAGE_BASE_IMAGE}" && \
     echo "SOURCE_PATH: ${SOURCE_PATH}" && \
