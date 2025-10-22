@@ -24,7 +24,7 @@ RUN ${JAVA_HOME_PATH}/bin/java --version
 # Download mxbuild kit
 RUN mkdir -p /opt/mxbuild && \
     cd /opt/mxbuild && \
-    curl -LJO https://cdn.mendix.com/runtime/mxbuild-9.24.40.80973.tar.gz && \
+    curl -LJO ${MXBUILD_URL} && \
     tar -zxvf mxbuild-9.24.40.80973.tar.gz
 
 
