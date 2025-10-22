@@ -2,6 +2,11 @@
 ARG PACKAGE_BASE_IMAGE=ubuntu:noble
 FROM ${PACKAGE_BASE_IMAGE} AS package
 
+# Update package lists and install software-properties-common
+RUN apt-get update && \
+    apt-get install -y software-properties-common && \
+    rm -rf /var/lib/apt/lists/*
+
 ARG SOURCE_PATH=./
 ARG MXBUILD_URL=https://cdn.mendix.com/runtime/mxbuild-9.24.40.80973.tar.gz
 ARG MXBUILD_PATH=/opt/mxbuild
