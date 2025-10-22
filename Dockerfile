@@ -4,7 +4,7 @@ FROM ${PACKAGE_BASE_IMAGE} AS package
 
 # Update package lists and install software-properties-common
 RUN apt-get update && \
-    apt-get install -y software-properties-common && \
+    apt-get install -y software-properties-common wget curl unzip tar vim && \
     rm -rf /var/lib/apt/lists/*
 
 ARG SOURCE_PATH=./
