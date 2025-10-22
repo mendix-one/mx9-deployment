@@ -1,0 +1,37 @@
+# Dockerfile to package Mendix project (build from mpr file to mda file)
+ARG PACKAGE_BASE_IMAGE=ubuntu:noble
+ARG SOURCE_PATH=./project
+ARG MXBUILD_URL=https://cdn.mendix.com/runtime/mxbuild-9.24.40.80973.tar.gz
+ARG MXBUILD_PATH=/opt/mxbuild
+ARG JAVA_JDK_PATH=./
+ARG JAVA_JDK_BIN_DEB=jdk-21_linux-x64_bin.deb
+ARG JAVA_HOME_PATH=/usr/lib/jvm/jdk-21.0.9-oracle-x64/
+
+# Set the user ID
+ARG USER_UID=1001
+
+#
+# Package stage with mxbuild base on ubunt noble - 24.04
+#
+FROM ${PACKAGE_BASE_IMAGE} AS packages
+
+# Install JDK
+WORKDIR /tmp
+COPY ${JAVA_JDK_PATH}/${JAVA_JDK_BIN_DEB} ./
+RUN dpkg -i ./${JAVA_JDK_BIN_DEB}
+RUN ${JAVA_HOME_PATH}/bin/java --version
+
+# Download mxbuild kit
+RUN mkdir -p /opt/mxbuild && \
+    cd /opt/mxbuild && \
+    curl -LJO https://cdn.mendix.com/runtime/mxbuild-9.24.40.80973.tar.gz && \
+    tar -zxvf mxbuild-9.24.40.80973.tar.gz
+
+
+# Build source
+RUN mkdir -p /opt/source && chown -R ${USER_UID}:0 /opt/source && chmod -R g=u /opt/source
+WORKDIR /opt/source
+COPY ${SOURCE_PATH} ./
+RUN ls -la
+
+ENTRYPOINT ["bash"]
