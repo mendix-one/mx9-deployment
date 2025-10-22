@@ -3,7 +3,7 @@ ARG PACKAGE_BASE_IMAGE=ubuntu:noble
 ARG SOURCE_PATH=./project
 ARG MXBUILD_URL=https://cdn.mendix.com/runtime/mxbuild-9.24.40.80973.tar.gz
 ARG MXBUILD_PATH=/opt/mxbuild
-ARG JAVA_JDK_PATH=./
+ARG JAVA_JDK_PATH=.
 ARG JAVA_JDK_BIN_DEB=jdk-21_linux-x64_bin.deb
 ARG JAVA_HOME_PATH=/usr/lib/jvm/jdk-21.0.9-oracle-x64/
 
