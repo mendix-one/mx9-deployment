@@ -10,6 +10,15 @@ ARG JAVA_HOME_PATH=/usr/lib/jvm/jdk-21.0.9-oracle-x64/
 # Set the user ID
 ARG USER_UID=1001
 
+# Check variable
+RUN echo "PACKAGE_BASE_IMAGE: ${PACKAGE_BASE_IMAGE}" && \
+    echo "SOURCE_PATH: ${SOURCE_PATH}" && \
+    echo "MXBUILD_URL: ${MXBUILD_URL}" && \
+    echo "MXBUILD_PATH: ${MXBUILD_PATH}" && \
+    echo "JAVA_JDK_PATH: ${JAVA_JDK_PATH}" && \
+    echo "JAVA_JDK_BIN_DEB: ${JAVA_JDK_BIN_DEB}" && \
+    echo "JAVA_HOME_PATH: ${JAVA_HOME_PATH}"
+
 #
 # Package stage with mxbuild base on ubunt noble - 24.04
 #
